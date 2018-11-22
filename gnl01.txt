@@ -1,0 +1,4 @@
+Premiere phrase.
+Deuxieme phrase.
+Troisieme phrase.
+Derniere phrase.
