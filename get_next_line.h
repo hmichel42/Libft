@@ -6,7 +6,7 @@
 /*   By: hmichel <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 17:03:16 by hmichel      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/15 17:17:00 by hmichel     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/27 18:29:48 by hmichel     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,7 +24,5 @@ typedef	struct	s_chain
 }				t_chain;
 
 int				get_next_line(const int fd, char **line);
-int				ft_copy_rest(char **dest, t_chain **to_write, const int fd);
-int				ft_read_write(char **dest, t_chain **to_write, const int fd);
 
 #endif
