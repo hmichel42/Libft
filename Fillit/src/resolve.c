@@ -47,7 +47,6 @@ t_coord ft_findplace(t_map *map, t_tetri tetris, int i, int j)
     t_coord     coord;
     int         cmt;
 
-    cmt = 0;
     while (map[j][i] != '.')
     {
         if (i < ft_intsqrt((*map)->size))
@@ -60,18 +59,97 @@ t_coord ft_findplace(t_map *map, t_tetri tetris, int i, int j)
         else
             return (NULL);   
     }
-    while ()
+    while ((j + 1) * (i + 1) <= map->size)
+    {
+        cmt = 0;
+        if (map[j][i + 1] && (tetris->tetri)[tetri->y][tetri->x + 1] &&
+            map[j][i + 1] == '.' && (tetris->tetri)[tetri->y][tetri->x + 1] != '.')
+            cmt++;
+        if (map[j][i + 2] && (tetris->tetri)[tetri->y][tetri->x + 2] &&
+            map[j][i + 2] == '.' && (tetris->tetri)[tetri->y][tetri->x + 2] != '.')
+            cmt++;
+        if (map[j][i + 3] && (tetris->tetri)[tetri->y][tetri->x + 3] &&
+            map[j][i + 3] == '.' && (tetris->tetri)[tetri->y][tetri->x + 3] != '.')
+            cmt++;
+        if (map[j + 1][i - 2] && (tetris->tetri)[tetri->y + 1][tetri->x - 2] &&
+            map[j + 1][i - 2] == '.' && (tetris->tetri)[tetri->y + 1][tetri->x - 2] != '.')
+            cmt++;
+        if (map[j + 1][i - 1] && (tetris->tetri)[tetri->y + 1][tetri->x - 1] &&
+            map[j + 1][i - 1] == '.' && (tetris->tetri)[tetri->y + 1][tetri->x - 1] != '.')
+            cmt++;
+        if (map[j + 1][i] && (tetris->tetri)[tetri->y + 1][tetri->x] &&
+            map[j + 1][i] == '.' && (tetris->tetri)[tetri->y + 1][tetri->x] != '.')
+            cmt++;
+        if (map[j + 1][i + 1] && (tetris->tetri)[tetri->y + 1][tetri->x + 1] &&
+            map[j + 1][i + 1] == '.' && (tetris->tetri)[tetri->y + 1][tetri->x + 1] != '.')
+            cmt++;
+        if (map[j + 1][i + 2] && (tetris->tetri)[tetri->y + 1][tetri->x + 2] &&
+            map[j + 1][i + 2] == '.' && (tetris->tetri)[tetri->y + 1][tetri->x + 2] != '.')
+            cmt++;
+        if (map[j + 2][i - 1] && (tetris->tetri)[tetri->y + 2][tetri->x - 1] &&
+            map[j + 2][i - 1] == '.' && (tetris->tetri)[tetri->y + 2][tetri->x - 1] != '.')
+            cmt++;
+        if (map[j + 2][i] && (tetris->tetri)[tetri->y + 2][tetri->x] &&
+            map[j + 2][i] == '.' && (tetris->tetri)[tetri->y + 2][tetri->x] != '.')
+            cmt++;
+        if (map[j + 2][i + 1] && (tetris->tetri)[tetri->y + 2][tetri->x + 1] &&
+            map[j + 2][i + 1] == '.' && (tetris->tetri)[tetri->y + 2][tetri->x + 1] != '.')
+            cmt++;
+        if (map[j + 3][i] && (tetris->tetri)[tetri->y + 3][tetri->x] &&
+            map[j + 3][i] == '.' && (tetris->tetri)[tetri->y + 3][tetri->x] != '.')
+            cmt++;
+        if (cmt == 4)
+        {
+            coord->i = i;
+            coord->j = j;
+            return (coord);
+        }
+        if (i < ft_intsqrt((*map)->size))
+            i++;
+        else if (j < ft_intsqrt((*map)->size))
+        {
+            i = 0;
+            j++;
+        }
+    }
+    return (NULL);
 }
 
 int     ft_puttetris(t_tetri *tetris, t_map **map, char letter)
 {
-    int     i;
     t_coord coord;
 
     while (tetris->letter != letter)
         tetris = tetris->next;
-    coord = ft_findplace(t_map *map, t_tetri tetris)
-
+    coord = ft_findplace(t_map *map, t_tetri tetris, 0, 0);
+    if (coord == NULL)
+        return (0);
+    map[coord->j][cord->i + 1] == letter;
+    if ((tetris->tetri)[tetri->y][tetri->x + 1] && tetris->tetri)[tetri->y][tetri->x + 1] != '.')
+        map[coord->j][cord->i + 1] == letter;
+    if ((tetris->tetri)[tetri->y][tetri->x + 2] && tetris->tetri)[tetri->y][tetri->x + 2] != '.')
+        map[coord->j][cord->i + 2] == letter;
+    if ((tetris->tetri)[tetri->y][tetri->x + 3] && tetris->tetri)[tetri->y][tetri->x + 3] != '.')
+        map[coord->j][cord->i + 3] == letter;
+    if ((tetris->tetri)[tetri->y + 1][tetri->x - 2] && tetris->tetri)[tetri->y + 1][tetri->x - 2] != '.')
+        map[coord->j + 1][cord->i - 2] == letter;
+    if ((tetris->tetri)[tetri->y + 1][tetri->x - 1] && tetris->tetri)[tetri->y + 1][tetri->x - 1] != '.')
+        map[coord->j + 1][cord->i - 1] == letter;
+    if ((tetris->tetri)[tetri->y + 1][tetri->x] && tetris->tetri)[tetri->y + 1][tetri->x] != '.')
+        map[coord->j + 1][cord->i] == letter;
+    if ((tetris->tetri)[tetri->y + 1][tetri->x + 1] && tetris->tetri)[tetri->y + 1][tetri->x + 1] != '.')
+        map[coord->j + 1][cord->i + 1] == letter;
+    if ((tetris->tetri)[tetri->y + 1][tetri->x + 2] && tetris->tetri)[tetri->y + 1][tetri->x + 2] != '.')
+        map[coord->j + 1][cord->i + 2] == letter;
+    if ((tetris->tetri)[tetri->y + 2][tetri->x - 1] && tetris->tetri)[tetri->y + 2][tetri->x - 1] != '.')
+        map[coord->j + 2][cord->i - 1] == letter;
+    if ((tetris->tetri)[tetri->y + 2][tetri->x] && tetris->tetri)[tetri->y + 2][tetri->x] != '.')
+        map[coord->j + 2][cord->i] == letter;
+    if ((tetris->tetri)[tetri->y + 2][tetri->x + 1] && tetris->tetri)[tetri->y + 2][tetri->x + 1] != '.')
+        map[coord->j + 2][cord->i + 1] == letter;
+    if ((tetris->tetri)[tetri->y + 3][tetri->x] && tetris->tetri)[tetri->y + 3][tetri->x] != '.')
+        map[coord->j + 3][cord->i] == letter;
+    return (1);
 }
 
 int     ft_solve(t_tetri **begin_tetris, t_map **map, t_coord *coord)
